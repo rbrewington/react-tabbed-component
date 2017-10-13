@@ -1,0 +1,102 @@
+{
+  "name": "react-tabbed-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && rollup -c && npm run minify",
+    "minify": "uglifyjs $npm_package_main -c -m --toplevel -o $npm_package_main",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "release": "npm run test && npm run build && npm version patch && npm publish && git push"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "tabbed",
+    "tabs",
+    "react-tabbed-component"
+  ],
+  "author": "Rachel Brewington",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=14"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-jest": "^21.0.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.7.2",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.1.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.49.3",
+    "rollup-plugin-babel": "^3.0.2",
+    "uglify-js": "^3.1.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "loose": true
+        }
+      ],
+      "react",
+      "stage-2"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "loose": true
+            }
+          ],
+          "stage-2",
+          "react"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    }
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react-child-resolver": "^1.0.2"
+  }
+}
